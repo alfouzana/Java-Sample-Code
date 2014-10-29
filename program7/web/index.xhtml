@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Program 7: Abdullah Alfouzan </title>
+        <p>You have added #{validationBean.size} clients</p>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h1> Please fill out the following form:</h1>
+            <p>All fields are required and must contain valid information</p>
+            
+            <h:panelGrid columns="5">
+                
+               <!--First Name -->
+                <h:outputText value="First Name:"/>
+                <h:inputText id="firstNameText" required="true"
+                             value ="#{validationBean.firstName}"
+                             requiredMessage="Please enter your first name"
+                             validatorMessage="First Name must be fewer than 30 characters">
+                             <f:validateLength maximum="30"/>
+                </h:inputText>
+                
+               <!--Last Name -->
+                <h:outputText value="Last Name:"/>
+                <h:inputText id="lastNameText" required="true"
+                             value ="#{validationBean.lastName}"
+                             requiredMessage="Please enter your last name"
+                             validatorMessage="last Name must be fewer than 30 characters">
+                             <f:validateLength maximum="30"/>
+                </h:inputText>
+               
+                <!-- SSN -->
+                <h:outputText value ="Social Security Number:"/>
+                <h:inputText id="SSNtext" required="true"
+                             value ="#{validationBean.SSN}"
+                             requiredMessage="Please enter your Social Security Number:"
+                             vaildatorMessage="Invaild SSN Format">
+                    <f:validateRegex pattern="^\d{3}-\d{2}-\d{4}$"/>
+                    
+                </h:inputText>
+                
+                <h:message for="SSNtext" styleClass="error"/>
+                 
+                <!-- Income -->
+                <h:outputText value ="Income:" />
+                <h:inputText id="incomeText" required="true"
+                             requiredMessage="Please enter your income:"
+                             value ="#{validationBean.tax}"
+                             validatorMessage="Invaild Number">
+                    <f:validateDoubleRange minimum="0" maximum="100000" />
+                        
+                    
+                </h:inputText>
+                <h:message for="incomeText" styleClass="error"/>
+            </h:panelGrid>
+            <h:commandButton value="Submit"/>
+            
+            </h:form>
+        
+        <p>
+            <h:outputLink value ="taxList.xhtml">
+                Click here to view the table of taxes
+            </h:outputLink>
+        </p>
+        
+    </h:body>
+</html>
+

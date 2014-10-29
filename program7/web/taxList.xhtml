@@ -1,0 +1,40 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>SSN and Tax</title>
+     </h:head>
+
+        <h:body>
+            <ul>
+                 <ui:repeat value="#{validationBean.SSNs}" var="s">
+                        
+                    <li>#{s}</li>
+                    
+                    
+                </ui:repeat>
+                
+                <ui:repeat value="#{validationBean.results}" var="t">
+                        
+                    <li>#{t}</li>
+                    
+                </ui:repeat>
+               
+                
+            </ul>
+            
+            <p><h:outputLink value="index.xhtml">
+                    Click here to add another client #{validationBean.firstName}
+                </h:outputLink></p>
+            
+        </h:body>
+        
+</html>
